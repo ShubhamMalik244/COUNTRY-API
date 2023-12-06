@@ -1,0 +1,22 @@
+@font-face {
+    font-family: "Nunito Sans";
+    src: url("../../public/fonts/NunitoSans-VariableFont_YTLC\,opsz\,wdth\,wght.woff2")
+      format("woff2");
+  }
+
+@mixin fonting($wght, $siz){
+    font-weight: $wght;
+    font-size: $siz;
+}
+
+@mixin boxShadow(){
+    box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;
+  }
+
+@mixin flexing($gap: 0, $justify:center, $align:center, $felx-flow:row Wrap){
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+  gap: $gap;
+  flex-flow: $felx-flow;
+}

@@ -1,0 +1,130 @@
+@use "../tooKit/all" as *;
+
+.primaryTemplate {
+  .searchAndFilterContainer {
+    padding: 2rem 0;
+    @include flexing(1rem, space-between);
+
+    //SEARCHING SECTION
+    .searchSection {
+      @include boxShadow;
+      @include flexing(20px, center, center, unset);
+      padding: 1rem 2rem;
+      border-radius: 0.2rem;
+      max-height: 3.5rem;
+
+      label {
+        width: 1.5rem;
+        height: 1.5rem;
+
+        .searchIcon {
+          width: 100%;
+          height: 100%;
+        }
+      }
+
+      input {
+        border: none;
+        outline: none;
+        background: transparent;
+        @include fonting(600, 1rem);
+        color: inherit;
+      }
+    }
+
+    //FILTER SECTION
+    .filterSection {
+      position: relative;
+
+      .upperTilePart {
+        @include fonting(600, $font-sm);
+        @include boxShadow;
+        padding: 1rem 5rem 1rem 1rem;
+        position: relative;
+        background-color: inherit;
+        color: inherit;
+        border-radius: 0.2rem;
+        max-height: 3.5rem;
+        border: none;
+
+        &::before {
+          content: "\2304";
+          position: absolute;
+          top: 7px;
+          right: 1rem;
+          transform: scale(1.4);
+        }
+      }
+
+      .lowerListPart {
+        @include boxShadow;
+        position: absolute;
+        top: calc(100% + 5px);
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        padding: 1rem;
+        border-radius: 5px;
+        background: inherit;
+
+        button {
+          color: inherit;
+          @include fonting(300, $font-sm);
+
+          &:hover {
+            color: $DarkGray_Input;
+          }
+        }
+      }
+    }
+  }
+
+  .cardBox {
+    padding: 2rem 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(18rem, max(22.4%, 18rem)));;
+    gap: 3rem;
+    justify-content: center;
+
+    .card {
+      cursor: pointer;
+      min-height: 20rem;
+      display: flex;
+      flex-direction: column;
+      @include boxShadow;
+      border-radius: 5px;
+
+      .countryFlagImgContainer {
+        width: 100%;
+        height: 45%;
+
+        .countryFlagImg {
+          width: 100%;
+          height: 100%;
+          border-radius: 5px 5px 0 0;
+        }
+      }
+
+      .countryInfo {
+        height: 55%;
+        border-radius: 0 0 5px 5px;
+        padding: 1.3rem;
+
+        h3 {
+          @include fonting(600, $font-md);
+          margin: 20px 0;
+        }
+
+        p {
+          @include fonting(300, $font-sm);
+          
+
+          span {
+            @include fonting(600, $font-sm);
+          }
+        }
+      }
+    }
+  }
+}

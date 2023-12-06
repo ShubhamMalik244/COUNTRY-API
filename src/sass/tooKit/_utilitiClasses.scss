@@ -1,0 +1,55 @@
+@use '../tooKit/all' as *;
+
+//CHECKING BORDER
+.checkBorder {
+  border: 1px solid rgb(212, 252, 70) !important;
+}
+
+//DISSAPPEAR
+.disappear {
+  display: none !important;
+}
+
+//LIGHT  MODE CLASSES
+.lightModeV1 {
+  background: $VeryLightGray_Background !important;
+  color: $VeryDarkBlue_Text !important; 
+}
+.lightModeV2 {
+  background: $White_Element !important;
+  color: $VeryDarkBlue_Text !important; 
+}
+.lightModeV3 {
+  background: $White_Element !important;
+  color: $DarkGray_Input !important; 
+}
+
+//DARK MODE CLASSES
+ .darkModeV1 {
+  background: $VeryDarkBlue_Background !important;
+  color: $White_Element;
+ }
+
+ .darkModeV2 {
+  background: $DarkBlue_Element;
+  color: $White_Element;
+ }
+
+//BUTTON CLASSES
+.commonBtnStyle{
+  border: none;
+  border-radius: 3px;
+  padding: .4rem 1.2rem;
+  background-color: $DarkBlue_Element;
+  color: inherit;
+  @include boxShadow;
+  cursor: pointer;
+}
+
+//LIST BUTTON CLASSES 
+.commonListBtnStyle {
+  text-align: left;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}

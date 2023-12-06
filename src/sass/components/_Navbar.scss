@@ -1,0 +1,33 @@
+@use "../tooKit/all" as *;
+
+.navbar {
+  min-height: 5rem;
+  @include flexing;
+  @include boxShadow;
+  position: absolute;
+  inset: 0 0 auto 0;
+
+  .navbox {
+    width: clamp(375px, 100vw, 1440px);
+    padding: 0 1rem;
+    @include flexing(0, space-between);
+
+    h1 {
+      @include fonting(800, clamp(1rem, 4vw, 1.5rem));
+    }
+
+    h2 {
+      @include flexing(10px);
+
+      .LDicon {
+        width: 1.2rem;
+        aspect-ratio: 1/1;
+        cursor: pointer;
+      }
+
+      .LDtext {
+        @include fonting(600, 0.9rem);
+      }
+    }
+  }
+}

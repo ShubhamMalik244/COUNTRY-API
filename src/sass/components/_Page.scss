@@ -1,0 +1,27 @@
+@use "../tooKit/all" as *;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Nunito Sans";
+  transition: background 0.7s;
+}
+
+//PLACEHOLDER'S OPACITY BY DEFAULT IS LESS THAN 1 SO...
+::placeholder {
+  opacity: 1;
+}
+
+.windowContainer {
+  min-width: 100vw;
+  min-height: 100dvh;
+  @include flexing(0, center, flex-start);
+  padding-top: 5rem; 
+}
+
+.page {
+  width: clamp(375px, 100vw, 1440px);
+  min-height: 100%;
+  padding: 0 1.5rem;
+}
