@@ -5,10 +5,14 @@
   color: #fff;
 
   .backBtn {
+    min-width: 6rem;
+    text-align: right;
     @include fonting(600, $font-sm);
-    @include flexing(1rem);
+    position: relative;
 
     &::before {
+      position: absolute;
+      inset: .4rem auto .4rem 1rem;
       content: '\2190';
       scale: 1.5;
     }

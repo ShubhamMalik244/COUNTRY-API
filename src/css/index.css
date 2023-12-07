@@ -205,15 +205,15 @@
   color: #fff;
 }
 .secondaryTemplate .backBtn {
+  min-width: 6rem;
+  text-align: right;
   font-weight: 600;
   font-size: 1rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
-  flex-flow: row Wrap;
+  position: relative;
 }
 .secondaryTemplate .backBtn::before {
+  position: absolute;
+  inset: 0.4rem auto 0.4rem 1rem;
   content: "←";
   scale: 1.5;
 }
