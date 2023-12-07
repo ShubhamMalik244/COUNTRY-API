@@ -18,7 +18,8 @@ export default function SearchAndFilter({
             alt="searchIcon"
           />
         </label>
-        <input
+        <input 
+        autoComplete="false"
           onChange={(e) => {setSearchInput(e.target.value); setFilterInput('')}}
           id="search"
           type="text"
