@@ -209,13 +209,14 @@
   text-align: right;
   font-weight: 600;
   font-size: 1rem;
-  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  flex-flow: row Wrap;
 }
-.secondaryTemplate .backBtn::before {
-  position: absolute;
-  inset: 0.4rem auto 0.4rem 1rem;
-  content: "←";
-  scale: 1.5;
+.secondaryTemplate .backBtn .arrowIcon {
+  width: 1rem;
 }
 .secondaryTemplate .countryInfoContainer {
   display: grid;

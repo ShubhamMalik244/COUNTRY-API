@@ -1,12 +1,15 @@
 import { replaceTemplate } from "../functions/onCardClick";
 
 export default function SecondaryTemplate({ colorThemObj, secondaryData }) {
+
+
   return (
     <div className="secondaryTemplate disappear">
       <button
         className={"commonBtnStyle backBtn " + colorThemObj.colorModeV2}
         onClick={replaceTemplate}
       >
+        <img src={colorThemObj.arrowIcon} alt="arrowIcon" className="arrowIcon"/>
         Back
       </button>
       <div className="countryInfoContainer">

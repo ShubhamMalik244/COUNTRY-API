@@ -8,13 +8,10 @@
     min-width: 6rem;
     text-align: right;
     @include fonting(600, $font-sm);
-    position: relative;
+    @include flexing(.5rem);
 
-    &::before {
-      position: absolute;
-      inset: .4rem auto .4rem 1rem;
-      content: '\2190';
-      scale: 1.5;
+    .arrowIcon{
+      width: 1rem;
     }
   }
 

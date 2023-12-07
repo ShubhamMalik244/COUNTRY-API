@@ -7,6 +7,7 @@ export default function onColorThemChange(themMode, setThemMode) {
     colorModeV1: "lightModeV1",
     colorModeV2: "lightModeV2",
     colorModeV3: "lightModeV3",
+    arrowIcon: "icons/arrowBlack.png",
   };
 
   const Dark = {
@@ -16,6 +17,7 @@ export default function onColorThemChange(themMode, setThemMode) {
     colorModeV1: "darkModeV1",
     colorModeV2: "darkModeV2",
     colorModeV3: "darkModeV2",
+    arrowIcon: "icons/arrowWhite.png",
   };
    
   (themMode.navText === 'LightMode')? setThemMode(Light) : setThemMode(Dark);
