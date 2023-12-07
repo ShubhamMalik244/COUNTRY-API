@@ -28,7 +28,6 @@ export default function App() {
     domain: "pupet data",
     currency: "pupet data",
     language: "pupet data",
-    borderCountry: ["pupet1", "pupet2", "pupet3"],
   });
 
   //ELEMENT PART OF THE COMPONET ***********************************************

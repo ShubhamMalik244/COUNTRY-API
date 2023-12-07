@@ -1,14 +1,14 @@
-import { useState } from "react";
 import { replaceTemplate } from "../functions/onCardClick";
 
 export default function SecondaryTemplate({ colorThemObj, secondaryData }) {
-  //LIST OF BUTTON
-  const [btnList, setBtnList] = useState('');
 
 
   return (
     <div className="secondaryTemplate disappear">
-      <button className={"commonBtnStyle backBtn " + colorThemObj.colorModeV2} onClick={replaceTemplate}>
+      <button
+        className={"commonBtnStyle backBtn " + colorThemObj.colorModeV2}
+        onClick={replaceTemplate}
+      >
         <span>&#8592; </span>
         <span> Back</span>
       </button>
@@ -35,17 +35,24 @@ export default function SecondaryTemplate({ colorThemObj, secondaryData }) {
           <div className="boderCountryContainer">
             <h2 className="boderCountryName">Border Countries:</h2>
             <div className="btnContainer">
-              {btnList ? btnList : 'No Borders Attached!'}
+              {secondaryData.borderCountry
+                ? secondaryData.borderCountry.map((v, index) => {
+                    return (
+                      <button
+                        key={index}
+                        className={"commonBtnStyle " + colorThemObj.colorModeV2}
+                      >
+                        {v}
+                      </button>
+                    );
+                  })
+                : "No Borders Attached!"}
             </div>
           </div>
         </section>
       </div>
     </div>
   );
-}
-
-function Button(props) {
-  return <button className="commonBtnStyle">{props.children}</button>;
 }
 
 function Info({ info, value }) {

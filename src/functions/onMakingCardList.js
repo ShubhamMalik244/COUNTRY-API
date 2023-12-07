@@ -59,7 +59,16 @@ function buildCardElementList(
 
 function Card(props) {
   return (
-    <section className="card" onClick={() => onCardClick(props.id, props.serverData, props.setSecondaryData)}>
+    <section
+      className="card"
+      onClick={() =>
+        onCardClick(
+          props.id,
+          props.serverData,
+          props.setSecondaryData
+        )
+      }
+    >
       <div className="countryFlagImgContainer">
         <img src={props.flag} alt="flag" className="countryFlagImg" />
       </div>

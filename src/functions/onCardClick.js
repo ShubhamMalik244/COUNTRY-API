@@ -1,24 +1,31 @@
-export default function onCardClick(id, serverData, setSecondaryData) {
+export default function onCardClick(
+  id,
+  serverData,
+  setSecondaryData,
+  colorThemObj
+) {
   //REPLACING TEMPLATES
-  replaceTemplate()
+  replaceTemplate();
 
   //CREATING A NEW SECONDARY DATA OBJ
   let newdata = serverData.find((d) => {
-    return d.cca2 == id;
+    return d.cca2 === id;
   });
+
   console.log(newdata);
+
   let newSecondaryData = {
     flagSrc: newdata.flags.png,
     countryName: newdata.name.common,
     nativName: Object.values(newdata.name.nativeName)[
-      Object.values(newdata.name.nativeName).length - 1 //Attention
+      Object.values(newdata.name.nativeName).length - 1 
     ].common,
     population: newdata.population,
     region: newdata.region,
     subRegion: newdata.subregion,
     capital: newdata.capital[0],
     domain: newdata.tld[0],
-    currency: Object.values(newdata.currencies)[0].name, //Attention
+    currency: Object.values(newdata.currencies).map((v) => { return v.name}).join(', '),
     language: Object.values(newdata.languages).join(", "),
     borderCountry: newdata.borders,
   };
