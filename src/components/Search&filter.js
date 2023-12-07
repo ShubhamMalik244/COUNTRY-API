@@ -19,7 +19,7 @@ export default function SearchAndFilter({
           />
         </label>
         <input 
-        autoComplete="false"
+        autoComplete="off"
           onChange={(e) => {setSearchInput(e.target.value); setFilterInput('')}}
           id="search"
           type="text"
