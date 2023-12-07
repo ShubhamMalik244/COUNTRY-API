@@ -8,14 +8,18 @@
     //SEARCHING SECTION
     .searchSection {
       @include boxShadow;
-      @include flexing(20px, center, center, unset);
-      padding: 1rem 2rem;
       border-radius: 0.2rem;
-      max-height: 3.5rem;
+      min-width: clamp(318px, 50vw, 500px);
+      min-height: 3.5rem;
+      position: relative;
 
       label {
+        position: absolute;
+        inset: 1rem 2rem 1rem;
+        display: inline-block;
         width: 1.5rem;
         height: 1.5rem;
+        cursor: pointer;
 
         .searchIcon {
           width: 100%;
@@ -24,6 +28,11 @@
       }
 
       input {
+        cursor: pointer;
+        width: 100%;
+        position: absolute;
+        padding: 1rem 0 1rem 5rem;
+        inset:  0;
         border: none;
         outline: none;
         background: transparent;
@@ -35,8 +44,9 @@
     //FILTER SECTION
     .filterSection {
       position: relative;
+      border-radius: 0.2rem;
 
-      .upperTilePart {
+      .upperTilePart {border-radius: 0.2rem;
         @include fonting(600, $font-sm);
         @include boxShadow;
         padding: 1rem 5rem 1rem 1rem;
@@ -46,6 +56,7 @@
         border-radius: 0.2rem;
         max-height: 3.5rem;
         border: none;
+        cursor: pointer;
 
         &::before {
           content: "\2304";

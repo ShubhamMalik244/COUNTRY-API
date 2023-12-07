@@ -13,24 +13,29 @@
 }
 .primaryTemplate .searchAndFilterContainer .searchSection {
   box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
-  flex-flow: unset;
-  padding: 1rem 2rem;
   border-radius: 0.2rem;
-  max-height: 3.5rem;
+  min-width: clamp(318px, 50vw, 500px);
+  min-height: 3.5rem;
+  position: relative;
 }
 .primaryTemplate .searchAndFilterContainer .searchSection label {
+  position: absolute;
+  inset: 1rem 2rem 1rem;
+  display: inline-block;
   width: 1.5rem;
   height: 1.5rem;
+  cursor: pointer;
 }
 .primaryTemplate .searchAndFilterContainer .searchSection label .searchIcon {
   width: 100%;
   height: 100%;
 }
 .primaryTemplate .searchAndFilterContainer .searchSection input {
+  cursor: pointer;
+  width: 100%;
+  position: absolute;
+  padding: 1rem 0 1rem 5rem;
+  inset: 0;
   border: none;
   outline: none;
   background: transparent;
@@ -40,8 +45,10 @@
 }
 .primaryTemplate .searchAndFilterContainer .filterSection {
   position: relative;
+  border-radius: 0.2rem;
 }
 .primaryTemplate .searchAndFilterContainer .filterSection .upperTilePart {
+  border-radius: 0.2rem;
   font-weight: 600;
   font-size: 1rem;
   box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;
@@ -52,6 +59,7 @@
   border-radius: 0.2rem;
   max-height: 3.5rem;
   border: none;
+  cursor: pointer;
 }
 .primaryTemplate .searchAndFilterContainer .filterSection .upperTilePart::before {
   content: "⌄";
