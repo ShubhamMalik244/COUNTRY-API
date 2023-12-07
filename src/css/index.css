@@ -213,7 +213,8 @@
   gap: 1rem;
   flex-flow: row Wrap;
 }
-.secondaryTemplate .backBtn span:first-child {
+.secondaryTemplate .backBtn::before {
+  content: "←";
   scale: 1.5;
 }
 .secondaryTemplate .countryInfoContainer {

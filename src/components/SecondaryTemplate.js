@@ -1,16 +1,13 @@
 import { replaceTemplate } from "../functions/onCardClick";
 
 export default function SecondaryTemplate({ colorThemObj, secondaryData }) {
-
-
   return (
     <div className="secondaryTemplate disappear">
       <button
         className={"commonBtnStyle backBtn " + colorThemObj.colorModeV2}
         onClick={replaceTemplate}
       >
-        <span>&#8592; </span>
-        <span> Back</span>
+        Back
       </button>
       <div className="countryInfoContainer">
         <section className="flagContainer">
