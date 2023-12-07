@@ -4,7 +4,8 @@ export default function Navbar({ colorThemObj, setColorThemObj }) {
   return (
     <nav className={"navbar " + colorThemObj.colorModeV2}>
       <div className="navbox">
-        <h1>Where in the world?</h1>
+        <h1>Where in the world? 🔥
+        </h1>
 
         <h2>
           <img
