@@ -10,7 +10,7 @@ export default function Navbar({ colorThemObj, setColorThemObj }) {
           <img
             onClick={() => onColorThemChange(colorThemObj, setColorThemObj)}
             className="LDicon"
-            src={colorThemObj.navIcon}
+            src={colorThemObj.navIco}
             alt="navIcon"
           />
           <span className="LDtext">{colorThemObj.navText}</span>
