@@ -1,5 +1,5 @@
 import { useState } from "react";
-import onToggelDropdown from "../functions/onToggelDropdown"; //FUNC
+import onToggelDropdown from "../functions/onToggelDropdown"; 
 
 export default function SearchAndFilter({
   colorThemObj,

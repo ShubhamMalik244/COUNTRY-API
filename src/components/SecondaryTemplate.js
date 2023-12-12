@@ -1,21 +1,30 @@
 import { replaceTemplate } from "../functions/onCardClick";
+import { createNewSecondaryData } from "../functions/onCardClick";
 
-export default function SecondaryTemplate({ colorThemObj, secondaryData }) {
-
-
+export default function SecondaryTemplate({
+  colorThemObj,
+  secondaryData,
+  setSecondaryData,
+}) {
   return (
     <div className="secondaryTemplate disappear">
       <button
         className={"commonBtnStyle backBtn " + colorThemObj.colorModeV2}
         onClick={replaceTemplate}
       >
-        <img src={colorThemObj.arrowIcon} alt="arrowIcon" className="arrowIcon"/>
+        <img
+          src={colorThemObj.arrowIcon}
+          alt="arrowIcon"
+          className="arrowIcon"
+        />
         Back
       </button>
+
       <div className="countryInfoContainer">
         <section className="flagContainer">
           <img src={secondaryData.flagSrc} alt="flag pic" className="flag" />
         </section>
+
         <section className={"infoContainer " + colorThemObj.colorModeV1}>
           <h2 className="countryName">{secondaryData.countryName}</h2>
           <div className="otherInfo">
@@ -41,6 +50,13 @@ export default function SecondaryTemplate({ colorThemObj, secondaryData }) {
                       <button
                         key={index}
                         className={"commonBtnStyle " + colorThemObj.colorModeV2}
+                        onClick={() =>
+                          createNewSecondaryData(
+                            v,
+                            secondaryData.serverData,
+                            setSecondaryData
+                          )
+                        }
                       >
                         {v}
                       </button>

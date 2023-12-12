@@ -20,16 +20,17 @@ export default function App() {
   const [filterInput, setFilterInput] = useState("");
   const [searchInput, setSearchInput] = useState("");
   const [secondaryData, setSecondaryData] = useState({
-    flagSrc: "pupet img",
-    countryName: "pupet data",
-    nativName: "pupet data",
-    population: "pupet data",
-    region: "pupet data",
-    subRegion: "pupet data",
-    capital: "pupet data",
-    domain: "pupet data",
-    currency: "pupet data",
-    language: "pupet data",
+    flagSrc: "dumy img",
+    countryName: "dumy data",
+    nativName: "dumy data",
+    population: "dumy data",
+    region: "dumy data",
+    subRegion: "dumy data",
+    capital: "dumy data",
+    domain: "dumy data",
+    currency: "dumy data",
+    language: "dumy data",
+    serverData: 'dumy data',
   });
 
   //ELEMENT PART OF THE COMPONET ***********************************************
@@ -55,6 +56,7 @@ export default function App() {
         <SecondaryTemplate
           colorThemObj={colorThemObj}
           secondaryData={secondaryData}
+          setSecondaryData={setSecondaryData}
         />
       </main>
     </div>

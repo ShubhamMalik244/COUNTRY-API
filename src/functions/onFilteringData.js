@@ -12,7 +12,7 @@ export default function onFilteringData(
       return d.region === filterInput;
     });
   }
-  //IF WE FILTER THE DATA BY SEARCHING
+  //IF WE FILTER THE DATA BY SEARCHING  //ATTENTION! MAKE SEARCH BETTER
   else if (searchInput) {
     filteredData = apiData.filter((d) => {
       return d.name.common.match(new RegExp(searchInput, "ig"));

@@ -95,7 +95,7 @@
 
     .card {
       cursor: pointer;
-      min-height: 20rem;
+      height: 24rem;
       display: flex;
       flex-direction: column;
       @include boxShadow;
@@ -119,7 +119,7 @@
 
         h3 {
           @include fonting(600, $font-md);
-          margin: 20px 0;
+          margin-bottom: 20px;
         }
 
         p {
