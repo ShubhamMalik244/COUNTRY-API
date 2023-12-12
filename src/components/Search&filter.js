@@ -18,9 +18,12 @@ export default function SearchAndFilter({
             alt="searchIcon"
           />
         </label>
-        <input 
-        autoComplete="off"
-          onChange={(e) => {setSearchInput(e.target.value); setFilterInput('')}}
+        <input
+          autoComplete="off"
+          onChange={(e) => {
+            setSearchInput(e.target.value);
+            setFilterInput("");
+          }}
           id="search"
           type="text"
           placeholder="Search for a country..."
@@ -32,10 +35,11 @@ export default function SearchAndFilter({
           className="upperTilePart"
           onClick={() => onToggelDropdown(visibility, setVisibility)}
         >
-          Filter by Region
+          <span>Filter by Region</span>
+          <img src={colorThemObj.arrowHeadIcon} className="arrowHead" alt="arrowHead"/>
         </button>
 
-        <div className={"lowerListPart " + visibility}>
+        <div className={"lowerListPart " + visibility + " " + colorThemObj.colorModeV2}>
           <RegionSelectBtn
             setFilterInput={() => setFilterInput("Africa")}
             setSearchInput={() => setSearchInput("")}

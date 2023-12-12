@@ -15,6 +15,7 @@ export default function App() {
     colorModeV2: "darkModeV2",
     colorModeV3: "darkModeV2",
     arrowIcon: "icons/arrowWhite.png",
+    arrowHeadIcon: "icons/arrowHeadWhite.png",
   });
   const [filterInput, setFilterInput] = useState("");
   const [searchInput, setSearchInput] = useState("");

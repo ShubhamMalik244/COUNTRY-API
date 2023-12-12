@@ -1,5 +1,4 @@
 export default function onColorThemChange(themMode, setThemMode) {
-
   const Light = {
     navIcon: "icons/darkMode.png",
     navText: "DarkMode",
@@ -8,6 +7,7 @@ export default function onColorThemChange(themMode, setThemMode) {
     colorModeV2: "lightModeV2",
     colorModeV3: "lightModeV3",
     arrowIcon: "icons/arrowBlack.png",
+    arrowHeadIcon: "icons/arrowHeadBlack.png",
   };
 
   const Dark = {
@@ -18,8 +18,8 @@ export default function onColorThemChange(themMode, setThemMode) {
     colorModeV2: "darkModeV2",
     colorModeV3: "darkModeV2",
     arrowIcon: "icons/arrowWhite.png",
+    arrowHeadIcon: "icons/arrowHeadWhite.png",
   };
-   
-  (themMode.navText === 'LightMode')? setThemMode(Light) : setThemMode(Dark);
-  
+
+  themMode.navText === "LightMode" ? setThemMode(Light) : setThemMode(Dark);
 }
