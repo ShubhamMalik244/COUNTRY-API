@@ -2,7 +2,6 @@ import Nav from "./components/Navbar";
 import SearchAndFilter from "./components/Search&filter";
 import Cardcontainer from "./components/Cardcontainer";
 import SecondaryTemplate from "./components/SecondaryTemplate";
-
 import { useState } from "react";
 
 export default function App() {
@@ -30,8 +29,9 @@ export default function App() {
     domain: "dumy data",
     currency: "dumy data",
     language: "dumy data",
-    serverData: 'dumy data',
+    apiData: "dumy data",
   });
+  const [template, setTemplate] = useState("primary");
 
   //ELEMENT PART OF THE COMPONET ***********************************************
   return (
@@ -39,25 +39,30 @@ export default function App() {
       <main className="page">
         <Nav colorThemObj={colorThemObj} setColorThemObj={setColorThemObj} />
 
-        <div className="primaryTemplate">
-          <SearchAndFilter
+        {template === "primary" ? (
+          <div className="primaryTemplate">
+            <SearchAndFilter
+              colorThemObj={colorThemObj}
+              setFilterInput={setFilterInput}
+              setSearchInput={setSearchInput}
+              searchInput={searchInput}
+            />
+            <Cardcontainer
+              colorThemObj={colorThemObj}
+              setSecondaryData={setSecondaryData}
+              filterInput={filterInput}
+              searchInput={searchInput}
+              setTemplate={setTemplate}
+            />
+          </div>
+        ) : (
+          <SecondaryTemplate
             colorThemObj={colorThemObj}
-            setFilterInput={setFilterInput}
-            setSearchInput={setSearchInput}
-          />
-          <Cardcontainer
-            colorThemObj={colorThemObj}
+            secondaryData={secondaryData}
             setSecondaryData={setSecondaryData}
-            filterInput={filterInput}
-            searchInput={searchInput}
+            setTemplate={setTemplate}
           />
-        </div>
-
-        <SecondaryTemplate
-          colorThemObj={colorThemObj}
-          secondaryData={secondaryData}
-          setSecondaryData={setSecondaryData}
-        />
+        )}
       </main>
     </div>
   );

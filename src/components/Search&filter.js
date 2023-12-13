@@ -1,12 +1,13 @@
 import { useState } from "react";
-import onToggelDropdown from "../functions/onToggelDropdown"; 
+import onToggelDropdown from "../functions/onToggelDropdown";
 
 export default function SearchAndFilter({
   colorThemObj,
   setFilterInput,
   setSearchInput,
+  searchInput,
 }) {
-  const [visibility, setVisibility] = useState("disappear");
+  const [dropdownVisibility, setDropdownVisibility] = useState(false);
 
   return (
     <div className="searchAndFilterContainer">
@@ -27,66 +28,85 @@ export default function SearchAndFilter({
           id="search"
           type="text"
           placeholder="Search for a country..."
+          value={searchInput}
         />
       </section>
 
       <section className={"filterSection " + colorThemObj.colorModeV2}>
         <button
           className="upperTilePart"
-          onClick={() => onToggelDropdown(visibility, setVisibility)}
+          onClick={() => onToggelDropdown(true, setDropdownVisibility)}
         >
           <span>Filter by Region</span>
-          <img src={colorThemObj.arrowHeadIcon} className="arrowHead" alt="arrowHead"/>
+          <img
+            src={colorThemObj.arrowHeadIcon}
+            className="arrowHead"
+            alt="arrowHead"
+          />
         </button>
 
-        <div className={"lowerListPart " + visibility + " " + colorThemObj.colorModeV2}>
-          <RegionSelectBtn
-            setFilterInput={() => setFilterInput("Africa")}
-            setSearchInput={() => setSearchInput("")}
-            onToggelDropdown={() => onToggelDropdown(visibility, setVisibility)}
-          >
-            Africa
-          </RegionSelectBtn>
-          <RegionSelectBtn
-            setFilterInput={() => setFilterInput("Americas")}
-            setSearchInput={() => setSearchInput("")}
-            onToggelDropdown={() => onToggelDropdown(visibility, setVisibility)}
-          >
-            Americas
-          </RegionSelectBtn>
-          <RegionSelectBtn
-            setFilterInput={() => setFilterInput("Asia")}
-            setSearchInput={() => setSearchInput("")}
-            onToggelDropdown={() => onToggelDropdown(visibility, setVisibility)}
-          >
-            Asia
-          </RegionSelectBtn>
-          <RegionSelectBtn
-            setFilterInput={() => setFilterInput("Europe")}
-            setSearchInput={() => setSearchInput("")}
-            onToggelDropdown={() => onToggelDropdown(visibility, setVisibility)}
-          >
-            Europe
-          </RegionSelectBtn>
-          <RegionSelectBtn
-            setFilterInput={() => setFilterInput("Oceania")}
-            setSearchInput={() => setSearchInput("")}
-            onToggelDropdown={() => onToggelDropdown(visibility, setVisibility)}
-          >
-            Oceania
-          </RegionSelectBtn>
-        </div>
+        {dropdownVisibility && (
+          <div className={"lowerListPart " + colorThemObj.colorModeV2}>
+            <RegionSelectBtn
+              setFilterInput={setFilterInput}
+              setSearchInput={setSearchInput}
+              onToggelDropdown={onToggelDropdown}
+              setDropdownVisibility={setDropdownVisibility}
+            >
+              Africa
+            </RegionSelectBtn>
+            <RegionSelectBtn
+              setFilterInput={setFilterInput}
+              setSearchInput={setSearchInput}
+              onToggelDropdown={onToggelDropdown}
+              setDropdownVisibility={setDropdownVisibility}
+            >
+              Americas
+            </RegionSelectBtn>
+            <RegionSelectBtn
+              setFilterInput={setFilterInput}
+              setSearchInput={setSearchInput}
+              onToggelDropdown={onToggelDropdown}
+              setDropdownVisibility={setDropdownVisibility}
+            >
+              Asia
+            </RegionSelectBtn>
+            <RegionSelectBtn
+              setFilterInput={setFilterInput}
+              setSearchInput={setSearchInput}
+              onToggelDropdown={onToggelDropdown}
+              setDropdownVisibility={setDropdownVisibility}
+            >
+              Europe
+            </RegionSelectBtn>
+            <RegionSelectBtn
+              setFilterInput={setFilterInput}
+              setSearchInput={setSearchInput}
+              onToggelDropdown={onToggelDropdown}
+              setDropdownVisibility={setDropdownVisibility}
+            >
+              Oceania
+            </RegionSelectBtn>
+          </div>
+        )}
       </section>
     </div>
   );
 }
 
-function RegionSelectBtn({ children, setFilterInput, onToggelDropdown }) {
+function RegionSelectBtn({
+  children,
+  setFilterInput,
+  setSearchInput,
+  onToggelDropdown,
+  setDropdownVisibility
+}) {
   return (
     <button
       onClick={() => {
-        setFilterInput();
-        onToggelDropdown();
+        setFilterInput(children);
+        setSearchInput("");
+        onToggelDropdown(false, setDropdownVisibility);
       }}
       className="commonListBtnStyle"
     >

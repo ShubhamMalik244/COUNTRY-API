@@ -1,4 +1,6 @@
-export default function onToggelDropdown(isDropdownVisible, setVisibility) {
-  (isDropdownVisible === 'disappear')? setVisibility(""): setVisibility('disappear');
-
+export default function onToggelDropdown(
+  dropdownVisibilityValue,
+  setDropdownVisibility
+) {
+  setDropdownVisibility(dropdownVisibilityValue);
 }

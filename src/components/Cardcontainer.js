@@ -1,13 +1,14 @@
 import { useState, useEffect } from "react";
 import onFetchData from "../functions/onFetchData";
 import onFilteringData from "../functions/onFilteringData";
-import onCardClick from "../functions/onCardClick";
+import onCreateNewSecondaryData from "../functions/onCreateNewSecondaryData";
 
 export default function Cardcontainer({
   colorThemObj,
   setSecondaryData,
   filterInput,
   searchInput,
+  setTemplate,
 }) {
   //VERIABLES
   const [apiData, setaApiData] = useState([]);
@@ -31,10 +32,10 @@ export default function Cardcontainer({
               <Card
                 key={d.cca2}
                 d={d}
-                onCardClick={onCardClick}
                 apiData={apiData}
                 setSecondaryData={setSecondaryData}
                 colorThemObj={colorThemObj}
+                setTemplate={setTemplate}
               />
             );
           })
@@ -44,11 +45,14 @@ export default function Cardcontainer({
 }
 
 //CARD COMPONENT ***********************
-function Card({ d, onCardClick, apiData, setSecondaryData, colorThemObj }) {
+function Card({ d, apiData, setSecondaryData, colorThemObj, setTemplate }) {
   return (
     <section
       className="card"
-      onClick={() => onCardClick(d.cca3, apiData, setSecondaryData)}
+      onClick={() => {
+        setTemplate("secondary");
+        onCreateNewSecondaryData(d.cca3, apiData, setSecondaryData);
+      }}
     >
       <div className="countryFlagImgContainer">
         <img src={d.flags.png} alt="flag" className="countryFlagImg" />

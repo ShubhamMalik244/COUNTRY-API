@@ -1,16 +1,16 @@
-import { replaceTemplate } from "../functions/onCardClick";
-import { createNewSecondaryData } from "../functions/onCardClick";
+import onCreateNewSecondaryData from "../functions/onCreateNewSecondaryData";
 
 export default function SecondaryTemplate({
   colorThemObj,
   secondaryData,
   setSecondaryData,
+  setTemplate,
 }) {
   return (
-    <div className="secondaryTemplate disappear">
+    <div className="secondaryTemplate">
       <button
         className={"commonBtnStyle backBtn " + colorThemObj.colorModeV2}
-        onClick={replaceTemplate}
+        onClick={() => setTemplate("primary")}
       >
         <img
           src={colorThemObj.arrowIcon}
@@ -45,21 +45,15 @@ export default function SecondaryTemplate({
             <h2 className="boderCountryName">Border Countries:</h2>
             <div className="btnContainer">
               {secondaryData.borderCountry
-                ? secondaryData.borderCountry.map((v, index) => {
+                ? secondaryData.borderCountry.map((countryName, index) => {
                     return (
-                      <button
+                      <BorderCountryBtn
                         key={index}
-                        className={"commonBtnStyle " + colorThemObj.colorModeV2}
-                        onClick={() =>
-                          createNewSecondaryData(
-                            v,
-                            secondaryData.serverData,
-                            setSecondaryData
-                          )
-                        }
-                      >
-                        {v}
-                      </button>
+                        colorThemObj={colorThemObj}
+                        countryName={countryName}
+                        secondaryData={secondaryData}
+                        setSecondaryData={setSecondaryData}
+                      />
                     );
                   })
                 : "No Borders Attached!"}
@@ -71,10 +65,34 @@ export default function SecondaryTemplate({
   );
 }
 
+//INFO COMPONENT
 function Info({ info, value }) {
   return (
     <p className="infoKey">
       {info} <span className="infoValue">{value}</span>
     </p>
+  );
+}
+
+//BORDER-COUNTRY-BUTTON COMPONENT
+function BorderCountryBtn({
+  colorThemObj,
+  countryName,
+  secondaryData,
+  setSecondaryData,
+}) {
+  return (
+    <button
+      className={"commonBtnStyle " + colorThemObj.colorModeV2}
+      onClick={() =>
+        onCreateNewSecondaryData(
+          countryName,
+          secondaryData.apiData,
+          setSecondaryData
+        )
+      }
+    >
+      {countryName}
+    </button>
   );
 }
