@@ -7,12 +7,8 @@ export default function Cardcontainer({
   handelNewSecondaryData,
   setTemplate,
 }) {
-  //VERIABLES
-
   const [cardListData, setCardListData] = useState(apiData);
 
-
-  //FILTERING THE DATA WITH SEARCH AND FILTER INPUT
   useEffect(() => {
     let filteredData = apiData;
 
@@ -49,7 +45,6 @@ export default function Cardcontainer({
   );
 }
 
-//CARD COMPONENT ***********************
 function Card({ d, handelNewSecondaryData, colorThemObj, setTemplate }) {
   return (
     <section

@@ -63,7 +63,7 @@ export default function SecondaryTemplate({
   );
 }
 
-//INFO COMPONENT
+
 function Info({ info, value }) {
   return (
     <p className="infoKey">
@@ -72,7 +72,7 @@ function Info({ info, value }) {
   );
 }
 
-//BORDER-COUNTRY-BUTTON COMPONENT
+
 function BorderCountryBtn({
   colorThemObj,
   countryCca3,
