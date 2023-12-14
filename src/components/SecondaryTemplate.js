@@ -1,21 +1,28 @@
-import { replaceTemplate } from "../functions/onCardClick";
-
-export default function SecondaryTemplate({ colorThemObj, secondaryData }) {
-
-
+export default function SecondaryTemplate({
+  colorThemObj,
+  secondaryData,
+  handelNewSecondaryData,
+  setTemplate,
+}) {
   return (
-    <div className="secondaryTemplate disappear">
+    <div className="secondaryTemplate">
       <button
         className={"commonBtnStyle backBtn " + colorThemObj.colorModeV2}
-        onClick={replaceTemplate}
+        onClick={() => setTemplate("primary")}
       >
-        <img src={colorThemObj.arrowIcon} alt="arrowIcon" className="arrowIcon"/>
+        <img
+          src={colorThemObj.arrowIcon}
+          alt="arrowIcon"
+          className="arrowIcon"
+        />
         Back
       </button>
+
       <div className="countryInfoContainer">
         <section className="flagContainer">
           <img src={secondaryData.flagSrc} alt="flag pic" className="flag" />
         </section>
+
         <section className={"infoContainer " + colorThemObj.colorModeV1}>
           <h2 className="countryName">{secondaryData.countryName}</h2>
           <div className="otherInfo">
@@ -36,14 +43,15 @@ export default function SecondaryTemplate({ colorThemObj, secondaryData }) {
             <h2 className="boderCountryName">Border Countries:</h2>
             <div className="btnContainer">
               {secondaryData.borderCountry
-                ? secondaryData.borderCountry.map((v, index) => {
+                ? secondaryData.borderCountry.map((countryCca3, index) => {
                     return (
-                      <button
+                      <BorderCountryBtn
                         key={index}
-                        className={"commonBtnStyle " + colorThemObj.colorModeV2}
-                      >
-                        {v}
-                      </button>
+                        colorThemObj={colorThemObj}
+                        countryCca3={countryCca3}
+                        secondaryData={secondaryData}
+                        handelNewSecondaryData={handelNewSecondaryData}
+                      />
                     );
                   })
                 : "No Borders Attached!"}
@@ -55,10 +63,31 @@ export default function SecondaryTemplate({ colorThemObj, secondaryData }) {
   );
 }
 
+
 function Info({ info, value }) {
   return (
     <p className="infoKey">
       {info} <span className="infoValue">{value}</span>
     </p>
+  );
+}
+
+
+function BorderCountryBtn({
+  colorThemObj,
+  countryCca3,
+  handelNewSecondaryData,
+}) {
+  return (
+    <button
+      className={"commonBtnStyle " + colorThemObj.colorModeV2}
+      onClick={() =>
+        handelNewSecondaryData(
+          countryCca3
+        )
+      }
+    >
+      {countryCca3}
+    </button>
   );
 }
