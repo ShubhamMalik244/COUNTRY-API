@@ -1,9 +1,7 @@
-import onCreateNewSecondaryData from "../functions/onCreateNewSecondaryData";
-
 export default function SecondaryTemplate({
   colorThemObj,
   secondaryData,
-  setSecondaryData,
+  handelNewSecondaryData,
   setTemplate,
 }) {
   return (
@@ -45,14 +43,14 @@ export default function SecondaryTemplate({
             <h2 className="boderCountryName">Border Countries:</h2>
             <div className="btnContainer">
               {secondaryData.borderCountry
-                ? secondaryData.borderCountry.map((countryName, index) => {
+                ? secondaryData.borderCountry.map((countryCca3, index) => {
                     return (
                       <BorderCountryBtn
                         key={index}
                         colorThemObj={colorThemObj}
-                        countryName={countryName}
+                        countryCca3={countryCca3}
                         secondaryData={secondaryData}
-                        setSecondaryData={setSecondaryData}
+                        handelNewSecondaryData={handelNewSecondaryData}
                       />
                     );
                   })
@@ -77,22 +75,19 @@ function Info({ info, value }) {
 //BORDER-COUNTRY-BUTTON COMPONENT
 function BorderCountryBtn({
   colorThemObj,
-  countryName,
-  secondaryData,
-  setSecondaryData,
+  countryCca3,
+  handelNewSecondaryData,
 }) {
   return (
     <button
       className={"commonBtnStyle " + colorThemObj.colorModeV2}
       onClick={() =>
-        onCreateNewSecondaryData(
-          countryName,
-          secondaryData.apiData,
-          setSecondaryData
+        handelNewSecondaryData(
+          countryCca3
         )
       }
     >
-      {countryName}
+      {countryCca3}
     </button>
   );
 }

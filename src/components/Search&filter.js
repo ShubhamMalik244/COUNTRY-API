@@ -1,13 +1,15 @@
 import { useState } from "react";
-import onToggelDropdown from "../functions/onToggelDropdown";
 
 export default function SearchAndFilter({
   colorThemObj,
-  setFilterInput,
-  setSearchInput,
-  searchInput,
+  inputData,
+  setInputData,
 }) {
   const [dropdownVisibility, setDropdownVisibility] = useState(false);
+
+  function handelDropdown(dropdownVisibilityValue) {
+    setDropdownVisibility(dropdownVisibilityValue);
+  }
 
   return (
     <div className="searchAndFilterContainer">
@@ -22,20 +24,22 @@ export default function SearchAndFilter({
         <input
           autoComplete="off"
           onChange={(e) => {
-            setSearchInput(e.target.value);
-            setFilterInput("");
+            setInputData({
+              filterInput: "",
+              searchInput: e.target.value,
+            });
           }}
           id="search"
           type="text"
           placeholder="Search for a country..."
-          value={searchInput}
+          value={inputData.searchInput}
         />
       </section>
 
       <section className={"filterSection " + colorThemObj.colorModeV2}>
         <button
           className="upperTilePart"
-          onClick={() => onToggelDropdown(true, setDropdownVisibility)}
+          onClick={() => handelDropdown(!dropdownVisibility && true)}
         >
           <span>Filter by Region</span>
           <img
@@ -48,42 +52,32 @@ export default function SearchAndFilter({
         {dropdownVisibility && (
           <div className={"lowerListPart " + colorThemObj.colorModeV2}>
             <RegionSelectBtn
-              setFilterInput={setFilterInput}
-              setSearchInput={setSearchInput}
-              onToggelDropdown={onToggelDropdown}
-              setDropdownVisibility={setDropdownVisibility}
+              setInputData={setInputData}
+              handelDropdown={handelDropdown}
             >
               Africa
             </RegionSelectBtn>
             <RegionSelectBtn
-              setFilterInput={setFilterInput}
-              setSearchInput={setSearchInput}
-              onToggelDropdown={onToggelDropdown}
-              setDropdownVisibility={setDropdownVisibility}
+              setInputData={setInputData}
+              handelDropdown={handelDropdown}
             >
               Americas
             </RegionSelectBtn>
             <RegionSelectBtn
-              setFilterInput={setFilterInput}
-              setSearchInput={setSearchInput}
-              onToggelDropdown={onToggelDropdown}
-              setDropdownVisibility={setDropdownVisibility}
+              setInputData={setInputData}
+              handelDropdown={handelDropdown}
             >
               Asia
             </RegionSelectBtn>
             <RegionSelectBtn
-              setFilterInput={setFilterInput}
-              setSearchInput={setSearchInput}
-              onToggelDropdown={onToggelDropdown}
-              setDropdownVisibility={setDropdownVisibility}
+              setInputData={setInputData}
+              handelDropdown={handelDropdown}
             >
               Europe
             </RegionSelectBtn>
             <RegionSelectBtn
-              setFilterInput={setFilterInput}
-              setSearchInput={setSearchInput}
-              onToggelDropdown={onToggelDropdown}
-              setDropdownVisibility={setDropdownVisibility}
+              setInputData={setInputData}
+              handelDropdown={handelDropdown}
             >
               Oceania
             </RegionSelectBtn>
@@ -94,19 +88,15 @@ export default function SearchAndFilter({
   );
 }
 
-function RegionSelectBtn({
-  children,
-  setFilterInput,
-  setSearchInput,
-  onToggelDropdown,
-  setDropdownVisibility
-}) {
+function RegionSelectBtn({ children, setInputData, handelDropdown }) {
   return (
     <button
       onClick={() => {
-        setFilterInput(children);
-        setSearchInput("");
-        onToggelDropdown(false, setDropdownVisibility);
+        setInputData({
+          filterInput: children,
+          searchInput: "",
+        });
+        handelDropdown(false);
       }}
       className="commonListBtnStyle"
     >

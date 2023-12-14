@@ -1,28 +1,33 @@
 import { useState, useEffect } from "react";
-import onFetchData from "../functions/onFetchData";
-import onFilteringData from "../functions/onFilteringData";
-import onCreateNewSecondaryData from "../functions/onCreateNewSecondaryData";
 
 export default function Cardcontainer({
   colorThemObj,
-  setSecondaryData,
-  filterInput,
-  searchInput,
+  apiData,
+  inputData,
+  handelNewSecondaryData,
   setTemplate,
 }) {
   //VERIABLES
-  const [apiData, setaApiData] = useState([]);
+
   const [cardListData, setCardListData] = useState(apiData);
 
-  //GETTING THE DATA FROM THE SREVER....
-  useEffect(() => {
-    onFetchData(setaApiData);
-  }, []);
 
   //FILTERING THE DATA WITH SEARCH AND FILTER INPUT
   useEffect(() => {
-    onFilteringData(apiData, searchInput, filterInput, setCardListData);
-  }, [apiData, filterInput, searchInput]);
+    let filteredData = apiData;
+
+    if (inputData.filterInput) {
+      filteredData = apiData.filter((d) => {
+        return d.region === inputData.filterInput;
+      });
+    } else if (inputData.searchInput) {
+      filteredData = apiData.filter((d) => {
+        return d.name.common.match(new RegExp(inputData.searchInput, "ig"));
+      });
+    }
+
+    setCardListData(filteredData);
+  }, [apiData, inputData]);
 
   return (
     <div className="cardBox">
@@ -33,7 +38,7 @@ export default function Cardcontainer({
                 key={d.cca2}
                 d={d}
                 apiData={apiData}
-                setSecondaryData={setSecondaryData}
+                handelNewSecondaryData={handelNewSecondaryData}
                 colorThemObj={colorThemObj}
                 setTemplate={setTemplate}
               />
@@ -45,13 +50,13 @@ export default function Cardcontainer({
 }
 
 //CARD COMPONENT ***********************
-function Card({ d, apiData, setSecondaryData, colorThemObj, setTemplate }) {
+function Card({ d, handelNewSecondaryData, colorThemObj, setTemplate }) {
   return (
     <section
       className="card"
       onClick={() => {
+        handelNewSecondaryData(d.cca3);
         setTemplate("secondary");
-        onCreateNewSecondaryData(d.cca3, apiData, setSecondaryData);
       }}
     >
       <div className="countryFlagImgContainer">
