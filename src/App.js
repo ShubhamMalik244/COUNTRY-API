@@ -60,35 +60,43 @@ export default function App() {
       : setColorThemObj(Dark);
   }
 
-  function handelNewSecondaryData(id) {
+  function handelNewSecondaryData(commonName) {
     let newdata = apiData.find((d) => {
-      return d.cca3 === id;
+      return d.name.common === commonName;
     });
 
     console.log(newdata);
 
     let newSecondaryData = {
-      flagSrc: newdata.flags.png,
-      countryName: newdata.name.common,
-      nativName: Object.values(newdata.name.nativeName)[
+      flagSrc: newdata.flags.png && newdata.flags.png,
+      countryName: newdata.name.common && newdata.name.common,
+      nativName: newdata.name.nativeName && Object.values(newdata.name.nativeName)[
         Object.values(newdata.name.nativeName).length - 1
       ].common,
-      population: newdata.population,
-      region: newdata.region,
-      subRegion: newdata.subregion,
-      capital: newdata.capital[0],
-      domain: newdata.tld[0],
-      currency: Object.values(newdata.currencies)
+      population: newdata.population && newdata.population,
+      region: newdata.region && newdata.region,
+      subRegion: newdata.subregion && newdata.subregion,
+      capital: newdata.capital && newdata.capital[0],
+      domain: newdata.tld && newdata.tld[0],
+      currency: newdata.currencies && Object.values(newdata.currencies)
         .map((v) => {
           return v.name;
         })
         .join(", "),
-      language: Object.values(newdata.languages).join(", "),
-      borderCountry: newdata.borders,
+      language: newdata.languages && Object.values(newdata.languages).join(", "),
+      borderCountry: newdata.borders && newdata.borders.map((v) => { return apiData.find((d) => { return d.cca3 === v }).name.common}),
     };
 
     //PUTTING NEW OBJ OUT
     setSecondaryData(newSecondaryData);
+  }
+
+  function handelInputData(data) {
+        setInputData(data)
+  }
+
+  function handelTemplate(data){
+         setTemplate(data)
   }
 
   //ELEMENT PART OF THE COMPONET ***********************************************
@@ -105,14 +113,14 @@ export default function App() {
             <SearchAndFilter
               colorThemObj={colorThemObj}
               inputData={inputData}
-              setInputData={setInputData}
+              handelInputData={handelInputData}
             />
             <Cardcontainer
               colorThemObj={colorThemObj}
               apiData={apiData}
               inputData={inputData}
               handelNewSecondaryData={handelNewSecondaryData}
-              setTemplate={setTemplate}
+              handelTemplate={handelTemplate}
             />
           </div>
         ) : (
@@ -120,7 +128,7 @@ export default function App() {
             colorThemObj={colorThemObj}
             secondaryData={secondaryData}
             handelNewSecondaryData={handelNewSecondaryData}
-            setTemplate={setTemplate}
+            handelTemplate={handelTemplate}
           />
         )}
       </main>

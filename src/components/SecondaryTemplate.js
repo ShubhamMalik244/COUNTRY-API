@@ -2,13 +2,13 @@ export default function SecondaryTemplate({
   colorThemObj,
   secondaryData,
   handelNewSecondaryData,
-  setTemplate,
+  handelTemplate,
 }) {
   return (
     <div className="secondaryTemplate">
       <button
         className={"commonBtnStyle backBtn " + colorThemObj.colorModeV2}
-        onClick={() => setTemplate("primary")}
+        onClick={() => handelTemplate("primary")}
       >
         <img
           src={colorThemObj.arrowIcon}
@@ -27,28 +27,28 @@ export default function SecondaryTemplate({
           <h2 className="countryName">{secondaryData.countryName}</h2>
           <div className="otherInfo">
             <div className="col1">
-              <Info info={"Nativ Name: "} value={secondaryData.nativName} />
-              <Info info={"Population: "} value={secondaryData.population} />
-              <Info info={"Regionn: "} value={secondaryData.region} />
-              <Info info={"Sub Region: "} value={secondaryData.subRegion} />
-              <Info info={"Capital: "} value={secondaryData.capital} />
+              <Info info={"Nativ Name: "} value={secondaryData.nativName || 'not found'} />
+              <Info info={"Population: "} value={secondaryData.population || 'not found'} />
+              <Info info={"Regionn: "} value={secondaryData.region || 'not found'} />
+              <Info info={"Sub Region: "} value={secondaryData.subRegion || 'not found'} />
+              <Info info={"Capital: "} value={secondaryData.capital || 'not found'} />
             </div>
             <div className="col2">
-              <Info info={"Top Level Domain: "} value={secondaryData.domain} />
-              <Info info={"Currencies: "} value={secondaryData.currency} />
-              <Info info={"Languages: "} value={secondaryData.language} />
+              <Info info={"Top Level Domain: "} value={secondaryData.domain || 'not found'} />
+              <Info info={"Currencies: "} value={secondaryData.currency || 'not found'} />
+              <Info info={"Languages: "} value={secondaryData.language || 'not found'} />
             </div>
           </div>
           <div className="boderCountryContainer">
             <h2 className="boderCountryName">Border Countries:</h2>
             <div className="btnContainer">
               {secondaryData.borderCountry
-                ? secondaryData.borderCountry.map((countryCca3, index) => {
+                ? secondaryData.borderCountry.map((commonName, index) => {
                     return (
                       <BorderCountryBtn
                         key={index}
                         colorThemObj={colorThemObj}
-                        countryCca3={countryCca3}
+                        countryCca3={commonName}
                         secondaryData={secondaryData}
                         handelNewSecondaryData={handelNewSecondaryData}
                       />
