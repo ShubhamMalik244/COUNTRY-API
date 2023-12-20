@@ -6,6 +6,7 @@
   box-sizing: border-box;
   font-family: "Nunito Sans";
   transition: background 0.7s;
+  scroll-behavior: smooth;
 }
 
 //PLACEHOLDER'S OPACITY BY DEFAULT IS LESS THAN 1 SO...
@@ -23,4 +24,6 @@
   width: clamp(375px, 100vw, 1440px);
   min-height: 100%;
   padding: 0 1.5rem;
+
+  
 }

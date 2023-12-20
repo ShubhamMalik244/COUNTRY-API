@@ -1,9 +1,18 @@
 @use "../tooKit/all" as *;
 
 .primaryTemplate {
+  position: relative;
+
   .searchAndFilterContainer {
-    padding: 2rem 0;
+    width: clamp(375px, 100vw, 1440px);
+    margin: auto;
+    padding: 2rem 1.5rem;
     @include flexing(1rem, space-between);
+    position: fixed;
+    top: 4.9rem;
+    left: 0;
+    right: 0;
+    z-index: 1;
 
     //SEARCHING SECTION
     .searchSection {
@@ -87,13 +96,22 @@
   }
 
   .cardBox {
-    padding: 2rem 0;
+    padding: 0 5px;
+    margin-top: 8rem;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(18rem, max(22.4%, 18rem)));;
+    grid-template-columns: repeat(auto-fit, minmax(18rem, max(22%, 18rem)));;
     gap: 3rem;
     justify-content: center;
+    
 
     .card {
+      transition: transform .2s;
+
+      &:hover{
+        transform: scale(1.02);
+        z-index: 0;
+      }
+
       cursor: pointer;
       height: 24rem;
       display: flex;
@@ -131,6 +149,29 @@
           }
         }
       }
+    }
+  }
+
+  .autoScrollUp{
+    display: block;
+    position: fixed;
+    right: 10px;
+    bottom: 45%;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    @include boxShadow;
+    opacity: .6;
+
+    &:hover{
+      opacity: 1;
+    }
+
+    img{
+      width: 100%;
+      height: 100%;
+      object-fit: scale-down;
+      transform: rotate(90deg);
     }
   }
 }

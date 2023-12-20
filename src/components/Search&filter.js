@@ -13,7 +13,7 @@ export default function SearchAndFilter({
   }
 
   return (
-    <div className="searchAndFilterContainer">
+    <div className={"searchAndFilterContainer " + colorThemObj.colorModeV1}>
       <section className={"searchSection " + colorThemObj.colorModeV3}>
         <label htmlFor="search">
           <img

@@ -23,6 +23,7 @@ export default function App() {
   });
   const [secondaryData, setSecondaryData] = useState({});
   const [template, setTemplate] = useState("primary");
+  const [AutoScroll, setAutoScroll] = useState(false);
 
   useEffect(() => {
     fetch("https://restcountries.com/v3.1/all").then((result1) => {
@@ -70,21 +71,32 @@ export default function App() {
     let newSecondaryData = {
       flagSrc: newdata.flags.png && newdata.flags.png,
       countryName: newdata.name.common && newdata.name.common,
-      nativName: newdata.name.nativeName && Object.values(newdata.name.nativeName)[
-        Object.values(newdata.name.nativeName).length - 1
-      ].common,
+      nativName:
+        newdata.name.nativeName &&
+        Object.values(newdata.name.nativeName)[
+          Object.values(newdata.name.nativeName).length - 1
+        ].common,
       population: newdata.population && newdata.population,
       region: newdata.region && newdata.region,
       subRegion: newdata.subregion && newdata.subregion,
       capital: newdata.capital && newdata.capital[0],
       domain: newdata.tld && newdata.tld[0],
-      currency: newdata.currencies && Object.values(newdata.currencies)
-        .map((v) => {
-          return v.name;
-        })
-        .join(", "),
-      language: newdata.languages && Object.values(newdata.languages).join(", "),
-      borderCountry: newdata.borders && newdata.borders.map((v) => { return apiData.find((d) => { return d.cca3 === v }).name.common}),
+      currency:
+        newdata.currencies &&
+        Object.values(newdata.currencies)
+          .map((v) => {
+            return v.name;
+          })
+          .join(", "),
+      language:
+        newdata.languages && Object.values(newdata.languages).join(", "),
+      borderCountry:
+        newdata.borders &&
+        newdata.borders.map((v) => {
+          return apiData.find((d) => {
+            return d.cca3 === v;
+          }).name.common;
+        }),
     };
 
     //PUTTING NEW OBJ OUT
@@ -92,16 +104,20 @@ export default function App() {
   }
 
   function handelInputData(data) {
-        setInputData(data)
+    setInputData(data);
   }
 
-  function handelTemplate(data){
-         setTemplate(data)
+  function handelTemplate(data) {
+    setTemplate(data);
   }
+
+  window.onscroll = (e) => {
+    window.scrollY >= 590 ? setAutoScroll(true) : setAutoScroll(false);
+  };
 
   //ELEMENT PART OF THE COMPONET ***********************************************
   return (
-    <div className={"windowContainer " + colorThemObj.colorModeV1}>
+    <div id="Navbar" className={"windowContainer " + colorThemObj.colorModeV1}>
       <main className="page">
         <Nav
           colorThemObj={colorThemObj}
@@ -115,6 +131,7 @@ export default function App() {
               inputData={inputData}
               handelInputData={handelInputData}
             />
+
             <Cardcontainer
               colorThemObj={colorThemObj}
               apiData={apiData}
@@ -122,6 +139,14 @@ export default function App() {
               handelNewSecondaryData={handelNewSecondaryData}
               handelTemplate={handelTemplate}
             />
+            {AutoScroll && (
+              <a
+                href="#Navbar"
+                className={"autoScrollUp " + colorThemObj.colorModeV2}
+              >
+                <img src={colorThemObj.arrowIcon} alt="upward arrow" />
+              </a>
+            )}
           </div>
         ) : (
           <SecondaryTemplate

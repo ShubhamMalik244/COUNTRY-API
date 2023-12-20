@@ -44,6 +44,10 @@
   color: inherit;
   @include boxShadow;
   cursor: pointer;
+
+  &:hover{
+    transform: scale(1.03);
+  }
 }
 
 //LIST BUTTON CLASSES 
