@@ -169,7 +169,7 @@
 }
 .primaryTemplate .cardBox {
   padding: 0 5px;
-  margin-top: 8rem;
+  margin-top: 12rem;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(18rem, max(22%, 18rem)));
   gap: 3rem;
