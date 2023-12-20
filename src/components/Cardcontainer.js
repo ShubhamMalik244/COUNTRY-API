@@ -5,7 +5,7 @@ export default function Cardcontainer({
   apiData,
   inputData,
   handelNewSecondaryData,
-  setTemplate,
+  handelTemplate,
 }) {
   const [cardListData, setCardListData] = useState(apiData);
 
@@ -36,7 +36,7 @@ export default function Cardcontainer({
                 apiData={apiData}
                 handelNewSecondaryData={handelNewSecondaryData}
                 colorThemObj={colorThemObj}
-                setTemplate={setTemplate}
+                handelTemplate={handelTemplate}
               />
             );
           })
@@ -45,13 +45,13 @@ export default function Cardcontainer({
   );
 }
 
-function Card({ d, handelNewSecondaryData, colorThemObj, setTemplate }) {
+function Card({ d, handelNewSecondaryData, colorThemObj, handelTemplate }) {
   return (
     <section
       className="card"
       onClick={() => {
-        handelNewSecondaryData(d.cca3);
-        setTemplate("secondary");
+        handelNewSecondaryData(d.name.common);
+        handelTemplate("secondary");
       }}
     >
       <div className="countryFlagImgContainer">

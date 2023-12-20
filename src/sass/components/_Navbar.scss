@@ -4,8 +4,9 @@
   min-height: 5rem;
   @include flexing;
   @include boxShadow;
-  position: absolute;
+  position: fixed;
   inset: 0 0 auto 0;
+  z-index: 2;
 
   .navbox {
     width: clamp(375px, 100vw, 1440px);

@@ -3,16 +3,17 @@ import { useState } from "react";
 export default function SearchAndFilter({
   colorThemObj,
   inputData,
-  setInputData,
+  handelInputData,
 }) {
   const [dropdownVisibility, setDropdownVisibility] = useState(false);
+  
 
   function handelDropdown(dropdownVisibilityValue) {
     setDropdownVisibility(dropdownVisibilityValue);
   }
 
   return (
-    <div className="searchAndFilterContainer">
+    <div className={"searchAndFilterContainer " + colorThemObj.colorModeV1}>
       <section className={"searchSection " + colorThemObj.colorModeV3}>
         <label htmlFor="search">
           <img
@@ -24,7 +25,7 @@ export default function SearchAndFilter({
         <input
           autoComplete="off"
           onChange={(e) => {
-            setInputData({
+            handelInputData({
               filterInput: "",
               searchInput: e.target.value,
             });
@@ -52,31 +53,31 @@ export default function SearchAndFilter({
         {dropdownVisibility && (
           <div className={"lowerListPart " + colorThemObj.colorModeV2}>
             <RegionSelectBtn
-              setInputData={setInputData}
+              handelInputData={handelInputData}
               handelDropdown={handelDropdown}
             >
               Africa
             </RegionSelectBtn>
             <RegionSelectBtn
-              setInputData={setInputData}
+              handelInputData={handelInputData}
               handelDropdown={handelDropdown}
             >
               Americas
             </RegionSelectBtn>
             <RegionSelectBtn
-              setInputData={setInputData}
+              handelInputData={handelInputData}
               handelDropdown={handelDropdown}
             >
               Asia
             </RegionSelectBtn>
             <RegionSelectBtn
-              setInputData={setInputData}
+              handelInputData={handelInputData}
               handelDropdown={handelDropdown}
             >
               Europe
             </RegionSelectBtn>
             <RegionSelectBtn
-              setInputData={setInputData}
+              handelInputData={handelInputData}
               handelDropdown={handelDropdown}
             >
               Oceania
@@ -88,11 +89,11 @@ export default function SearchAndFilter({
   );
 }
 
-function RegionSelectBtn({ children, setInputData, handelDropdown }) {
+function RegionSelectBtn({ children, handelInputData, handelDropdown }) {
   return (
     <button
       onClick={() => {
-        setInputData({
+        handelInputData({
           filterInput: children,
           searchInput: "",
         });
