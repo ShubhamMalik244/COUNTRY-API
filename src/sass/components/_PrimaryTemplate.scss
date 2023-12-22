@@ -97,7 +97,7 @@
 
   .cardBox {
     padding: 0 5px;
-    margin-top: 12rem;
+    margin-top: 12.5rem;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(18rem, max(22%, 18rem)));;
     gap: 3rem;
@@ -156,12 +156,11 @@
     display: block;
     position: fixed;
     right: 10px;
-    bottom: 10%;
+    bottom: 45%;
     width: 3rem;
     height: 3rem;
     border-radius: 50%;
     @include boxShadow;
-    opacity: .8;
 
     &:hover{
       opacity: 1;
