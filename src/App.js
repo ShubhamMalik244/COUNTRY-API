@@ -24,6 +24,7 @@ export default function App() {
   const [secondaryData, setSecondaryData] = useState({});
   const [template, setTemplate] = useState("primary");
   const [AutoScroll, setAutoScroll] = useState(false);
+  const [scrollAmt, setScrollAmt] = useState(0);
 
   useEffect(() => {
     fetch("https://restcountries.com/v3.1/all").then((result1) => {
@@ -32,6 +33,10 @@ export default function App() {
       });
     });
   }, []);
+
+  useEffect(() => {
+    template === "secondary" && window.scrollTo(0, 0);
+  }, [template]);
 
   function handelColorThemChange() {
     const Light = {
@@ -108,6 +113,12 @@ export default function App() {
   }
 
   function handelTemplate(data) {
+    if (template === "primary") {
+      setScrollAmt(window.scrollY);
+    }
+    if (template === "secondary") {
+      setTimeout(() => window.scrollBy(0, scrollAmt), 0);
+    }
     setTemplate(data);
   }
 
